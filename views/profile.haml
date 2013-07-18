@@ -18,9 +18,10 @@
       =tweet.created_at.strftime("%b %e, %l:%M %p")
     %br
 
-%h3 New Tweet
-%form{:action => "/users/#{@user.id.to_s}/tweets/new", :method => :post}
-  %label{:name => "tweet"} Tweet
-  %textarea{:name => "tweet", :placeholder => "Write your tweet here."}
-  %br
-  %input{:type => "submit", :class => "btn"}
+-if current_user.id == @user.id
+  %h3 New Tweet
+  %form{:action => "/users/#{@user.id.to_s}/tweets/new", :method => :post}
+    %label{:name => "tweet"} Tweet
+    %textarea{:name => "tweet", :placeholder => "Write your tweet here."}
+    %br
+    %input{:type => "submit", :class => "btn"}

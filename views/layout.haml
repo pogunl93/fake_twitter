@@ -8,14 +8,22 @@
     .row
       .span8.offset2
         %h1 Welcome to Fake Twitter &copy;
-        -if !params[:alert].nil?
-          =params[:alert]
+        -if !flash[:notice].nil?
+          .alert=flash[:notice]
         %ul.nav.nav-pills
           %li
             %a{:href => "/"} Home
           %li
-            %a{:href => "/users/sign_up"} Sign Up
+            %a{:href => "/users/#{current_user.id.to_s}"} Profile
           %li
             %a{:href => "/news_feed"} News Feed
+          -if current_user.nil?
+            %li
+              %a{:href => "/sign_in"} Sign In
+            %li
+              %a{:href => "/users/sign_up"} Sign Up
+          -else
+            %li
+              %a{:href => "/sign_out"} Sign Out
       .span10.offset2
         =yield

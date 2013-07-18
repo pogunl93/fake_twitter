@@ -1,5 +1,7 @@
 -@tweets.each do |tweet|
   -if !tweet.text.nil?
     =tweet.text
-    =@user.to_s
+    %br
+    =tweet.user.full_name
+    %br
     %br
